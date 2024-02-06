@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_playground/page/repo_detail/controller/repo_detail_controller.dart';
+import 'package:flutter_getx_playground/page/repo_detail/repo_detail_controller.dart';
 import 'package:get/get.dart';
 
 class RepoDetailPage extends StatelessWidget {
@@ -15,7 +15,7 @@ class RepoDetailPage extends StatelessWidget {
         final loading = RepoDetailController.to.loading;
 
         final repoDetail = RepoDetailController.to.repoDetail;
-
+        
         if (loading.value) return const Center(child: CircularProgressIndicator());
 
         return Column(

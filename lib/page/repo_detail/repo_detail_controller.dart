@@ -15,8 +15,16 @@ class RepoDetailController extends GetxController {
   final loading = true.obs;
 
   RepoDetailModel get repoDetail {
-    return mapToRepoDetailModel(_repoDetailResponse.value, _contributorResponses.value);
+    return mapToRepoDetailModel(_repoDetailResponse.value, _contributorResponses);
   }
+
+  // String get name => _repoDetailResponse.value.name ?? '';
+  // String get description => _repoDetailResponse.value.description ?? '';
+  // String get language => _repoDetailResponse.value.language ?? '';
+  //
+  // // required String sshUrl,
+  // // required String starCountText,
+  // // required List<ContributorItemModel> contributors,
 
   @override
   void onInit() {

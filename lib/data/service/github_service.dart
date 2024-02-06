@@ -31,25 +31,3 @@ class GithubServiceImpl extends GetConnect implements GithubService {
   Future<List<RepoResponse>> getUserRepos({required String username}) =>
       get('${_url}users/$username/repos?page=0&per_page=10').decodeJsonList(RepoResponse.fromJson);
 }
-
-class GithubServiceFake implements GithubService {
-  @override
-  Future<List<ContributorResponse>> getContributors({required String username, required String repoName}) async {
-    return [];
-  }
-
-  @override
-  Future<UserResponse> getUser({required String username}) async {
-    return UserResponse();
-  }
-
-  @override
-  Future<RepoDetailResponse> getUserRepoDetail({required String username, required String repoName}) async {
-    return RepoDetailResponse();
-  }
-
-  @override
-  Future<List<RepoResponse>> getUserRepos({required String username}) async {
-    return [];
-  }
-}

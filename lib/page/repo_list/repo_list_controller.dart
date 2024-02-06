@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_getx_playground/app_router.dart';
 import 'package:flutter_getx_playground/common/common_constants.dart';
 import 'package:flutter_getx_playground/data/response/github_response.dart';
 import 'package:flutter_getx_playground/data/service/github_service.dart';
@@ -7,14 +9,16 @@ import 'package:get/get.dart';
 
 class RepoListController extends GetxController {
   final GithubService _githubService;
+  final AppRouter _appRouter;
 
-  RepoListController(this._githubService);
+  RepoListController(this._githubService, this._appRouter);
 
-  final _responses = <RepoResponse>[].obs;
+  @visibleForTesting
+  final responses = <RepoResponse>[].obs;
 
   final loading = true.obs;
 
-  List<RepoItemModel> get repos => _responses.map(mapToRepoItemModel).toList();
+  List<RepoItemModel> get repos => responses.map(mapToRepoItemModel).toList();
 
   @override
   void onInit() {
@@ -24,16 +28,15 @@ class RepoListController extends GetxController {
 
   Future<void> fetchData() async {
     loading.value = true;
-    _responses.value = await _githubService.getUserRepos(username: username);
+    responses.value = await _githubService.getUserRepos(username: username);
+    // TODO: handle error
     loading.value = false;
   }
 
-  static RepoListController get to => Get.find();
-
   void onClickRepoItem(int id) {
-    final repoName = _responses.firstWhereOrNull((x) => x.id == id)?.name;
+    final repoName = responses.firstWhereOrNull((x) => x.id == id)?.name;
     if (repoName == null) return;
 
-    Get.toNamed('/repoDetail/$repoName');
+    _appRouter.openRepoDetailPage(repoName: repoName);
   }
 }

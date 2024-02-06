@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_playground/page/repo_list/component/repo_item.dart';
-import 'package:flutter_getx_playground/page/repo_list/controller/repo_list_controller.dart';
+import 'package:flutter_getx_playground/page/repo_list/repo_list_controller.dart';
 import 'package:get/get.dart';
 
-class RepoListPage extends StatelessWidget {
+
+class RepoListPage extends GetView<RepoListController> {
   const RepoListPage({super.key});
 
   @override
@@ -13,8 +14,8 @@ class RepoListPage extends StatelessWidget {
         title: const Text('RepoList'),
       ),
       body: Obx(() {
-        final repos = RepoListController.to.repos;
-        final loading = RepoListController.to.loading;
+        final repos = controller.repos;
+        final loading = controller.loading;
 
         if (loading.value) return const Center(child: CircularProgressIndicator());
 

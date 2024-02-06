@@ -1,7 +1,10 @@
 import 'package:flutter_getx_playground/data/response/github_response.dart';
 import 'package:flutter_getx_playground/page/repo_detail/model/repo_detail_model.dart';
 
-RepoDetailModel mapToRepoDetailModel(RepoDetailResponse repoDetailResponse, List<ContributorResponse> contributorResponses) {
+RepoDetailModel mapToRepoDetailModel(
+  RepoDetailResponse repoDetailResponse,
+  List<ContributorResponse> contributorResponses,
+) {
   return RepoDetailModel(
     name: repoDetailResponse.name ?? '',
     description: repoDetailResponse.description ?? '',
