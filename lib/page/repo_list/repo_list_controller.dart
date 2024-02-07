@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_playground/app_router.dart';
+import 'package:flutter_getx_playground/common/base/base_controller.dart';
 import 'package:flutter_getx_playground/common/common_constants.dart';
 import 'package:flutter_getx_playground/data/response/github_response.dart';
 import 'package:flutter_getx_playground/data/service/github_service.dart';
@@ -7,11 +7,10 @@ import 'package:flutter_getx_playground/page/repo_list/model/repo_list_model.dar
 import 'package:flutter_getx_playground/page/repo_list/util/repo_list_util.dart';
 import 'package:get/get.dart';
 
-class RepoListController extends GetxController {
-  final GithubService _githubService;
-  final AppRouter _appRouter;
+class RepoListController extends BaseController {
+  final GithubService _githubService = Get.find();
 
-  RepoListController(this._githubService, this._appRouter);
+  RepoListController();
 
   @visibleForTesting
   final responses = <RepoResponse>[].obs;
@@ -37,6 +36,7 @@ class RepoListController extends GetxController {
     final repoName = responses.firstWhereOrNull((x) => x.id == id)?.name;
     if (repoName == null) return;
 
-    _appRouter.openRepoDetailPage(repoName: repoName);
+    appRouter.openRepoDetailPage(repoName: repoName);
+
   }
 }

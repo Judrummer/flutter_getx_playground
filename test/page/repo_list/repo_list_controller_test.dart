@@ -45,7 +45,9 @@ void main() {
     late RepoListController controller;
 
     setUp(() {
-      controller = RepoListController(githubService, appRouter);
+      Get.put(appRouter);
+      Get.put(githubService);
+      controller = RepoListController();
       Get.testMode = true;
     });
 
@@ -59,8 +61,11 @@ void main() {
 
         // Assert
         expect(controller.loading.value, false);
+        expect(controller.responses, mockRepoResponses);
         expect(controller.repos, expectedRepoItems);
       });
+
+      // should show error when api is not 200
     });
 
     group('onClickRepoItem', () {
@@ -76,7 +81,7 @@ void main() {
         verify(() => appRouter.openRepoDetailPage(repoName: 'Flutter'));
       });
 
-      test('should not openRepoDetailPage when id not is exist', () async {
+      test('should not openRepoDetailPage when id is not exist', () async {
         // Arrange
         when(() => appRouter.openRepoDetailPage(repoName: 'Flutter')).thenAnswer((_) async {});
         controller.responses.value = mockRepoResponses;

@@ -1,3 +1,4 @@
+import 'package:flutter_getx_playground/common/base/base_controller.dart';
 import 'package:flutter_getx_playground/common/common_constants.dart';
 import 'package:flutter_getx_playground/data/response/github_response.dart';
 import 'package:flutter_getx_playground/data/service/github_service.dart';
@@ -5,10 +6,10 @@ import 'package:flutter_getx_playground/page/repo_detail/model/repo_detail_model
 import 'package:flutter_getx_playground/page/repo_detail/util/repo_detail_util.dart';
 import 'package:get/get.dart';
 
-class RepoDetailController extends GetxController {
-  final GithubService _githubService;
+class RepoDetailController extends BaseController {
+  final GithubService _githubService = Get.find();
 
-  RepoDetailController(this._githubService);
+  RepoDetailController();
 
   final _contributorResponses = <ContributorResponse>[].obs;
   final _repoDetailResponse = const RepoDetailResponse().obs;

@@ -4,6 +4,6 @@ import 'package:get/get.dart';
 class RepoListBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<RepoListController>(() => RepoListController(Get.find(), Get.find()));
+    Get.lazyPut<RepoListController>(() => RepoListController());
   }
 }

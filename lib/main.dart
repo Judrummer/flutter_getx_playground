@@ -64,13 +64,13 @@ class AppBinding implements Bindings {
 
   @override
   void dependencies() {
-    Get.put(AppController());
-    Get.put(AppRouter());
+    Get.put(AppController(), permanent: true);
+    Get.put(AppRouter(), permanent: true);
 
     if (env == Environment.fake) {
-      Get.put<GithubService>(GithubServiceFake());
+      Get.put<GithubService>(GithubServiceFake(), permanent: true);
     } else {
-      Get.put<GithubService>(GithubServiceImpl());
+      Get.put<GithubService>(GithubServiceImpl(), permanent: true);
     }
   }
 }

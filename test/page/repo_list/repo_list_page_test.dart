@@ -49,12 +49,17 @@ void main() {
           id: 2,
           name: 'codelabs',
           description: 'dddd',
-        )
+        ),
       ];
+
       when(() => controller.repos).thenAnswer((_) => mockRepos);
       when(() => controller.loading).thenAnswer((_) => false.obs);
 
       await pumpPage(tester);
+
+      expect(find.byType(CircularProgressIndicator), findsNothing);
+      expect(find.text('flutter'), findsOne);
+      expect(find.text('Flutter make it easy'), findsOne);
 
       expect(find.text('codelabs'), findsOne);
       expect(find.text('dddd'), findsOne);
