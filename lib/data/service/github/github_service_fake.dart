@@ -1,5 +1,6 @@
 import 'package:flutter_getx_playground/data/response/github_response.dart';
-import 'package:flutter_getx_playground/data/service/github_service.dart';
+import 'package:flutter_getx_playground/data/service/github/github_service.dart';
+import 'package:get/get_connect/connect.dart';
 
 const fakeReposJson = [
   {
@@ -1223,4 +1224,10 @@ class GithubServiceFake implements GithubService {
   Future<List<RepoResponse>> getUserRepos({required String username}) async {
     return fakeReposJson.map((e) => RepoResponse.fromJson(e)).toList();
   }
+
+  @override
+  String get baseUrl => throw UnimplementedError();
+
+  @override
+  GetConnect get connect => throw UnimplementedError();
 }

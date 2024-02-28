@@ -1,7 +1,7 @@
 import 'package:flutter_getx_playground/app_router.dart';
 import 'package:flutter_getx_playground/common/common_constants.dart';
 import 'package:flutter_getx_playground/data/response/github_response.dart';
-import 'package:flutter_getx_playground/data/service/github_service.dart';
+import 'package:flutter_getx_playground/data/service/github/github_service.dart';
 import 'package:flutter_getx_playground/page/repo_list/model/repo_list_model.dart';
 import 'package:flutter_getx_playground/page/repo_list/repo_list_controller.dart';
 import 'package:flutter_test/flutter_test.dart';

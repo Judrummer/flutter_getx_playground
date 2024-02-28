@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx_playground/app_controller.dart';
 import 'package:flutter_getx_playground/app_router.dart';
 import 'package:flutter_getx_playground/common/common_model.dart';
-import 'package:flutter_getx_playground/data/service/github_service.dart';
-import 'package:flutter_getx_playground/data/service/github_service_fake.dart';
+import 'package:flutter_getx_playground/data/service/github/github_service.dart';
+import 'package:flutter_getx_playground/data/service/github/github_service_fake.dart';
 import 'package:flutter_getx_playground/page/repo_detail/repo_detail_binding.dart';
 import 'package:flutter_getx_playground/page/repo_detail/repo_detail_page.dart';
 import 'package:flutter_getx_playground/page/repo_list/repo_list_binding.dart';
 import 'package:flutter_getx_playground/page/repo_list/repo_list_page.dart';
 import 'package:flutter_getx_playground/page/splash_screen/splash_screen_page.dart';
 import 'package:get/get.dart';
+
+import 'data/service/github/github_service_impl.dart';
 
 void main() {
   runApp(const MyApp(
