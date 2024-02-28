@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_playground/app_router.dart';
 import 'package:flutter_getx_playground/page/repo_list/component/repo_item.dart';
 import 'package:flutter_getx_playground/page/repo_list/repo_list_controller.dart';
 import 'package:get/get.dart';
-
 
 class RepoListPage extends GetView<RepoListController> {
   const RepoListPage({super.key});
@@ -11,7 +11,12 @@ class RepoListPage extends GetView<RepoListController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('RepoList'),
+        title: InkWell(
+          onTap: () {
+            Get.find<AppRouter>().openIsolatePage();
+          },
+          child: const Text('RepoList'),
+        ),
       ),
       body: Obx(() {
         final repos = controller.repos;

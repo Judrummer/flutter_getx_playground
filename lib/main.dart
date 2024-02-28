@@ -4,6 +4,8 @@ import 'package:flutter_getx_playground/app_router.dart';
 import 'package:flutter_getx_playground/common/common_model.dart';
 import 'package:flutter_getx_playground/data/service/github/github_service.dart';
 import 'package:flutter_getx_playground/data/service/github/github_service_fake.dart';
+import 'package:flutter_getx_playground/page/isolate/isolate_binding.dart';
+import 'package:flutter_getx_playground/page/isolate/isolate_page.dart';
 import 'package:flutter_getx_playground/page/repo_detail/repo_detail_binding.dart';
 import 'package:flutter_getx_playground/page/repo_detail/repo_detail_page.dart';
 import 'package:flutter_getx_playground/page/repo_list/repo_list_binding.dart';
@@ -42,6 +44,11 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/splashScreen',
           page: () => const SplashScreenPage(),
+        ),
+        GetPage(
+          name: '/isolate',
+          binding: IsolateBinding(),
+          page: () => const IsolatePage(),
         ),
         GetPage(
           name: '/repoList',
